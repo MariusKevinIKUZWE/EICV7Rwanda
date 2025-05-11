@@ -1,0 +1,198 @@
+/* www/style.css - Custom CSS for EICV7 Dashboard */
+
+/* NISR Color Palette */
+:root {
+  --nisr-blue: #003b71;
+  --nisr-light-blue: #2176ae;
+  --nisr-gold: #d4af37;
+  --nisr-grey: #58595b;
+  --nisr-light-grey: #f2f2f2;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--nisr-light-grey);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--nisr-blue);
+  font-weight: 600;
+}
+
+/* Navigation Styling */
+.navbar {
+  background-color: var(--nisr-blue);
+  border-color: var(--nisr-gold);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white !important;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  background-color: var(--nisr-light-blue) !important;
+  color: white !important;
+}
+
+/* Panel Styling */
+.panel {
+  background-color: white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: var(--nisr-blue);
+  border-color: var(--nisr-blue);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--nisr-light-blue);
+  border-color: var(--nisr-light-blue);
+}
+
+.btn-secondary {
+  background-color: var(--nisr-grey);
+  border-color: var(--nisr-grey);
+  color: white;
+}
+
+/* Table Styling */
+.dataTable {
+  border: 1px solid #ddd;
+}
+
+.dataTable th {
+  background-color: var(--nisr-blue);
+  color: white;
+}
+
+.dataTable tr:nth-child(even) {
+  background-color: var(--nisr-light-grey);
+}
+
+/* Chart Container Styling */
+.chart-container {
+  background-color: white;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Custom Cards for Dashboard KPIs */
+.kpi-card {
+  text-align: center;
+  padding: 15px;
+  background-color: white;
+  border-left: 4px solid var(--nisr-gold);
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.kpi-card h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: var(--nisr-grey);
+}
+
+.kpi-card .value {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--nisr-blue);
+}
+
+/* Filter Panel Styling */
+.filter-panel {
+  background-color: var(--nisr-light-grey);
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.filter-panel label {
+  font-weight: 600;
+  color: var(--nisr-blue);
+}
+
+/* Map Container */
+.leaflet-container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .panel {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+}
+
+/* Footer styling */
+footer {
+  font-size: 12px;
+}
+
+footer a {
+  color: var(--nisr-gold);
+}
+
+/* --- Poverty Tab Enhancements --- */
+
+/* Unified Card Style for Visual Sections */
+.visual-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Consistent Header Coloring */
+.visual-card h3 {
+  color: var(--nisr-blue);
+  margin-bottom: 15px;
+}
+
+/* Improved selectInput alignment and spacing */
+.selectInput {
+  margin-bottom: 20px;
+  width: 300px !important;
+}
+
+/* Chart Styling for Plotly Wrappers */
+.plotly-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Optional: Typography enhancements */
+body {
+  line-height: 1.6;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+
