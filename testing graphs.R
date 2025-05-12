@@ -1,6 +1,25 @@
-install.packages("readxl")
+library(shiny)
 library(readxl)
+library(plotly)
+library(dplyr)
+library(tidyr)
 
-poverty_data <- read_excel("EICV7Rwanda.xlsx", sheet = 1)
 
-View(poverty_data)
+
+ui <- fluidPage(
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),
+  h2("Education Dashboard"),
+  
+
+  
+  ,
+  
+  
+)
+
+server <- function(input, output, session) {
+  
+
+}
+
+shinyApp(ui, server)

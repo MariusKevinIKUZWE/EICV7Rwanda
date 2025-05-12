@@ -12,7 +12,7 @@ library(readxl)
 ui <- fluidPage(
   # Include custom CSS
   tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "www/style.css"),
+    tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
     tags$link(rel = "stylesheet", href = "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700")
   ),
   
@@ -112,30 +112,139 @@ ui <- fluidPage(
       fluidRow(
         column(12, 
                tags$h2("Education Statistics", style = "color: var(--nisr-blue);"),
-               tags$div(
-                 class = "panel",
-                 tags$h3("Education Indicators"),
-                 # YOU: add UI content here later
-                 h3("Coming soon...")
-               )
+        ),
+        
+        # Attendance & Promotion
+        fluidRow(
+          column(5,
+                 div(class = "chart-container",
+                     div(class = "filter-panel",
+                         div(class = "filter-group selectInput",
+                             selectInput("Education_att_secondary", "According to:", choices = unique(attendance_rates$Secondaryfilter))
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_att_third_filter")
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_att_school_filter")
+                         )
+                     ),
+                     plotlyOutput("Education_attendance_chart")
+                 )
+          ),
+          column(7,
+                 div(class = "chart-container",
+                     div(class = "filter-panel",
+                         div(class = "filter-group selectInput",
+                             selectInput("Education_pr_secondary", "According to:", choices = unique(promotion_repetition$Secondaryfilter))
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_pr_third_filter")
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_pr_indicator_filter")
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_pr_school_filter")
+                         )
+                     ),
+                     plotlyOutput("Education_promotion_chart")
+                 )
+          )
+        ),
+        # Education Levels
+        div(class = "chart-container",
+            div(class = "filter-panel",
+                div(class = "filter-group selectInput",
+                    selectInput("Education_mainfilter", "According to:", choices = unique(education_levels$Mainfilter))
+                ),
+                div(class = "filter-group selectInput",
+                    uiOutput("Education_secondary_filter")
+                )
+            ),
+            plotlyOutput("Education_levels_chart")
+        ),
+        
+        # Literacy & Computer Literacy
+        fluidRow(
+          column(6,
+                 div(class = "chart-container",
+                     div(class = "filter-panel",
+                         div(class = "filter-group selectInput",
+                             selectInput("Education_ln_main", "According to:", choices = unique(literacy_numeracy$Mainfilter))
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_ln_secondary_filter")
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_ln_third_filter")
+                         )
+                     ),
+                     plotlyOutput("Education_literacy_numeracy_chart")
+                 )
+          ),
+          column(6,
+                 div(class = "chart-container",
+                     div(class = "filter-panel",
+                         div(class = "filter-group selectInput",
+                             selectInput("Education_cl_main", "According to:", choices = unique(computer_literacy$Mainfilter))
+                         ),
+                         div(class = "filter-group selectInput",
+                             uiOutput("Education_cl_secondary_filter")
+                         )
+                     ),
+                     plotlyOutput("Education_computer_literacy_chart")
+                 )
+          )
         )
       )
     ),
     
     # Employment Tab
-    tabPanel(
-      "Employment",
-      fluidRow(
-        column(12, 
-               tags$h2("Employment Statistics", style = "color: var(--nisr-blue);"),
-               tags$div(
-                 class = "panel",
-                 tags$h3("Employment Indicators"),
-                 # YOU: add UI content here later
-                 h3("Coming soon...")
+    tabPanel("Employment",
+             fluidPage(
+               fluidRow(
+                 column(6,
+                        div(class = "filter-panel",
+                            div(class = "filter-group selectInput",
+                                tags$label("Select Province:"),
+                                selectInput("employment_province_filter", NULL, choices = NULL)
+                            )
+                        ),
+                        div(class = "chart-container", plotlyOutput("employment_gender_pie"))
+                 ),
+                 column(6,
+                        div(class = "filter-panel",
+                            div(class = "filter-group selectInput",
+                                tags$label("Select Area (Urban/Rural):"),
+                                selectInput("employment_residence_filter", NULL, choices = NULL)
+                            )
+                        ),
+                        div(class = "chart-container", plotlyOutput("employment_urban_rural_pie"))
+                 )
+               ),
+               fluidRow(
+                 column(6,
+                        div(class = "filter-panel",
+                            div(class = "filter-group selectInput",
+                                tags$label("Select Economic Activity:"),
+                                selectInput("employment_activity_filter", NULL, choices = NULL)
+                            )
+                        ),
+                        div(class = "chart-container", plotlyOutput("employment_gender_by_activity_bar"))
+                 ),
+                 column(6,
+                        div(class = "filter-panel",
+                            div(class = "filter-group selectInput",
+                                tags$label("Select Age Group:"),
+                                selectInput("employment_age_filter", NULL, choices = NULL)
+                            )
+                        ),
+                        div(class = "chart-container", plotlyOutput("employment_age_gender_bar"))
+                 )
                )
-        )
-      )
+             )
+             
     ),
     
     # Housing Tab

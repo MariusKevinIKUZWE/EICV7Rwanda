@@ -1,18 +1,25 @@
 /* www/style.css - Custom CSS for EICV7 Dashboard */
 
-/* NISR Color Palette */
+/* ===================== */
+/* === NISR Color Palette === */
+/* ===================== */
 :root {
   --nisr-blue: #003b71;
   --nisr-light-blue: #2176ae;
   --nisr-gold: #d4af37;
-  --nisr-grey: #58595b;
+  --nisr-grey: #4a4a4a;
   --nisr-light-grey: #f2f2f2;
+  --border-radius: 10px;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Global Styles */
+/* =============== */
+/* === Base Styles === */
+/* =============== */
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: var(--nisr-light-grey);
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,7 +27,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* Navigation Styling */
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+/* ================ */
+/* === Navigation === */
+/* ================ */
 .navbar {
   background-color: var(--nisr-blue);
   border-color: var(--nisr-gold);
@@ -38,62 +55,32 @@ h1, h2, h3, h4, h5, h6 {
   color: white !important;
 }
 
-/* Panel Styling */
-.panel {
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: var(--nisr-gold) !important;
+  color: white !important;
+}
+
+/* ===================== */
+/* === Panels & Cards === */
+/* ===================== */
+.panel,
+.chart-container,
+.kpi-card,
+.visual-card,
+.plotly-container,
+.card-box {
   background-color: white;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s ease;
 }
 
-/* Button Styling */
-.btn-primary {
-  background-color: var(--nisr-blue);
-  border-color: var(--nisr-blue);
-}
-
-.btn-primary:hover, .btn-primary:focus {
-  background-color: var(--nisr-light-blue);
-  border-color: var(--nisr-light-blue);
-}
-
-.btn-secondary {
-  background-color: var(--nisr-grey);
-  border-color: var(--nisr-grey);
-  color: white;
-}
-
-/* Table Styling */
-.dataTable {
-  border: 1px solid #ddd;
-}
-
-.dataTable th {
-  background-color: var(--nisr-blue);
-  color: white;
-}
-
-.dataTable tr:nth-child(even) {
-  background-color: var(--nisr-light-grey);
-}
-
-/* Chart Container Styling */
-.chart-container {
-  background-color: white;
-  padding: 15px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-/* Custom Cards for Dashboard KPIs */
+/* KPI Cards */
 .kpi-card {
   text-align: center;
-  padding: 15px;
-  background-color: white;
   border-left: 4px solid var(--nisr-gold);
-  margin-bottom: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .kpi-card h3 {
@@ -108,41 +95,204 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--nisr-blue);
 }
 
-/* Filter Panel Styling */
-.filter-panel {
-  background-color: var(--nisr-light-grey);
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-.filter-panel label {
-  font-weight: 600;
+/* Visual Card Headers */
+.visual-card h3 {
   color: var(--nisr-blue);
+  margin-bottom: 15px;
 }
 
-/* Map Container */
+/* ====================== */
+/* === Buttons & Badges === */
+/* ====================== */
+.btn-primary {
+  background-color: var(--nisr-blue);
+  border-color: var(--nisr-blue);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--nisr-light-blue);
+  border-color: var(--nisr-light-blue);
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--nisr-grey);
+  border-color: var(--nisr-grey);
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Badges */
+.badge {
+  background-color: var(--nisr-gold);
+  color: white;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ================== */
+/* === Data Tables === */
+/* ================== */
+.dataTable {
+  border: none;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.dataTable th {
+  background-color: var(--nisr-blue);
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dataTable td {
+  font-size: 13px;
+  padding: 10px;
+}
+
+.dataTable tr:nth-child(even) {
+  background-color: var(--nisr-light-grey);
+}
+
+/* ======================== */
+/* === Filters & Inputs === */
+/* ======================== */
+/* ======================== */
+/* === Filters & Inputs === */
+/* ======================== */
+/* ===================== */
+/* === Filters & Inputs === */
+/* ===================== */
+
+
+
+.filter-panel {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: row; /* Change from column to row */
+  align-items: center;
+  justify-content: flex-start; /* Align items to the left */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 20px; /* Add space between filters */
+  margin-bottom: 25px;
+  border-left: 5px solid var(--nisr-gold);
+}
+
+/* Each filter input group */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  flex: 1 0 auto; /* Don't stretch, allow multiple in one row */
+  align-items: flex-start; /* Left-align filter elements */
+}
+
+/* Styling the selectInput fields */
+.selectInput select,
+.selectInput input,
+.selectInput .form-control {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color 0.2s ease-in-out;
+  width: 100%;  /* Make the select inputs fill their container */
+  max-width: 280px; /* Limit the width for select inputs */
+}
+
+.selectInput select:focus,
+.selectInput input:focus {
+  border-color: var(--nisr-light-blue);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 118, 174, 0.2);
+}
+
+.selectInput select:hover,
+.selectInput input:hover {
+  border-color: var(--nisr-blue);
+}
+
+.filter-panel .btn {
+  margin-top: 5px;
+  width: 100%; /* Ensure any buttons take up the full width if used */
+  max-width: 280px; /* Limit button width */
+}
+
+/* ===================== */
+/* === Chart Containers === */
+/* ===================== */
+.chart-container {
+  margin-top: 20px; /* Space between filters and charts */
+}
+
+/* ======================= */
+/* === Responsive Design === */
+/* ======================= */
+@media (max-width: 768px) {
+  .filter-panel {
+    flex-direction: column; /* Stack filter panel items vertically on small screens */
+    align-items: center; /* Center the filters within the column */
+  }
+
+  .filter-group {
+    width: 100%; /* Make the filter group take up full width in small screens */
+    max-width: 280px; /* Optional max-width to keep filters consistent */
+  }
+
+  .chart-container {
+    margin-top: 10px; /* Reduce spacing for charts on small screens */
+  }
+}
+
+
+/* ====================== */
+/* === Leaflet Map Box === */
+/* ====================== */
 .leaflet-container {
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 }
 
-/* Responsive Adjustments */
+/* ======================= */
+/* === Responsive Design === */
+/* ======================= */
 @media (max-width: 768px) {
   .panel {
     padding: 10px;
   }
-  
+
   h1 {
     font-size: 24px;
   }
-  
+
   h2 {
     font-size: 20px;
   }
 }
 
-/* Footer styling */
+/* ================= */
+/* === Footer CSS === */
+/* ================= */
 footer {
   font-size: 12px;
 }
@@ -150,49 +300,3 @@ footer {
 footer a {
   color: var(--nisr-gold);
 }
-
-/* --- Poverty Tab Enhancements --- */
-
-/* Unified Card Style for Visual Sections */
-.visual-card {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Consistent Header Coloring */
-.visual-card h3 {
-  color: var(--nisr-blue);
-  margin-bottom: 15px;
-}
-
-/* Improved selectInput alignment and spacing */
-.selectInput {
-  margin-bottom: 20px;
-  width: 300px !important;
-}
-
-/* Chart Styling for Plotly Wrappers */
-.plotly-container {
-  background-color: white;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-/* Optional: Typography enhancements */
-body {
-  line-height: 1.6;
-}
-
-h2 {
-  font-size: 26px;
-}
-
-h3 {
-  font-size: 20px;
-}
-
-
